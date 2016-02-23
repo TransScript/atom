@@ -1,0 +1,9 @@
+module TransScript
+
+/* Nested /* co /*mme */nt */ */
+
+enum Boolean  ( TRUE; FALSE; )
+
+"fdsa"
+
+rule F → text⟦ some text ⟨ rule F ( text⟦ ⟨rule fa⟩ ⟧ ) ⟩ ⟧

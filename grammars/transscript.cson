@@ -1,0 +1,109 @@
+{
+  "scopeName": "source.transscript",
+  "name": "TransScript",
+  "comment": "TransScript Language",
+  "fileTypes": [
+    "crs4", "tsc"
+  ],
+  "patterns": [
+    {
+      "include": "#transscript"
+    }
+  ],
+  "repository": {
+    "transscript": {
+      "patterns": [
+        {
+          "include": "#comments"
+        },
+        {
+          "include": "#concrete"
+        },
+        {
+          "match": "\\/\\/.*",
+          "name": "comment.line.transscript"
+        },
+        {
+          "match": "→|->",
+          "name": "punctuation.definition.heading.transscript"
+        },
+        {
+          "match": "([A-Z$_+/|`~!@^&*=?/><.:]|-)([0-9a-zA-Z$_+/|`~!@^&*=?/><.:]|-)*",
+          "name": "support.function.transscript"
+        },
+        {
+          "match": "rule|enum|type|func|dispatch|module|import|grammar|infixl|infixr|infix|prefix|postfix",
+          "name": "keyword.control.transscript"
+        },
+        {
+          "match": ",|\\(|\\)|\\[|\\]",
+          "name": "meta.separator.transscript"
+        },
+        {
+          "match": "#[0-9a-zA-Z]*",
+          "name": "variable.transscript"
+        },
+        {
+          "include": "#string"
+        }
+      ]
+    },
+    "string": {
+      "patterns": [
+        {
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "include": "#string"
+            }
+          ],
+          "name": "string.transscript"
+        }
+      ]
+    },
+    "comments": {
+      "patterns": [
+        {
+          "begin": "/\\*",
+          "end": "\\*/",
+          "patterns": [
+            {
+              "include": "#comments"
+            }
+          ],
+          "name": "comment.block.transscript"
+        }
+      ]
+    },
+    "concrete": {
+      "patterns": [
+        {
+          "begin": "([a-z][a-zA-Z0-9\\-_]*('*'|'?'|'+')?)(⟦)",
+          "end": "(⟧)",
+          "beginCaptures" : {
+            "1" : { "name" : 'support.class.transscript' },
+            "3" : { "name" : 'meta.separator.transscript' }
+          },
+          "endCaptures" : {
+            "1" : { "name" : 'meta.separator.transscript' }
+          },
+          "patterns": [
+            {
+              "begin": "⟨",
+              "end": "⟩",
+              "name": "embedded.source.transscript",
+              "patterns" : [ {
+                "include": "#transscript"
+              } ]
+            },
+            {
+              "include": "#concrete"
+            }
+          ],
+          "name": "punctuation.section.embedded.transscript"
+        }
+      ]
+    }
+  }
+}
