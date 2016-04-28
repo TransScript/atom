@@ -12,5 +12,14 @@
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "configSchema": {
+    "metaCompilerPath": {
+      "title": "TransScript Meta-Compiler Path",
+      "description": "Path to the directory containing the TransScript JAR distribution.",
+      "type": "string",
+      "default": ".",
+      "order": 1
+    }
+  }
 }

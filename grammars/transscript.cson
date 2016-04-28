@@ -32,7 +32,7 @@
           "name": "entity.name.function.transscript"
         },
         {
-          "match": "func|eager|extern|rule|enum|type|dispatch|module|import|grammar|infixl|infixr|infix|prefix|postfix",
+          "match": "func|eager|lazy|extern|rule|enum|type|dispatch|module|import|grammar|infixl|infixr|infix|prefix|postfix|allows-variable",
           "name": "keyword.control.transscript"
         },
         {
