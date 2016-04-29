@@ -5,7 +5,7 @@
   "description": "TransScript language support in Atom",
   "keywords": [],
   "activationCommands": {
-    "atom-workspace": "language-transscript:toggle"
+    "atom-workspace": ["core:save","language-transscript:check"]
   },
   "repository": "https://github.com/TransScript/atom.git",
   "license": "EPL",
@@ -19,6 +19,13 @@
       "description": "Path to the directory containing the TransScript JAR distribution.",
       "type": "string",
       "default": ".",
+      "order": 1
+    },
+    "javaPath": {
+      "title": "Java Path",
+      "description": "Path to the java executable.",
+      "type": "string",
+      "default": "/usr/bin/java",
       "order": 1
     }
   }

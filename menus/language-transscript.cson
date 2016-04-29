@@ -2,19 +2,19 @@
 'context-menu':
   'atom-text-editor': [
     {
-      'label': 'Toggle language-transscript'
-      'command': 'language-transscript:toggle'
+      'label': 'Check syntax'
+      'command': 'language-transscript:check'
     }
   ]
 'menu': [
   {
     'label': 'Packages'
     'submenu': [
-      'label': 'language-transscript'
+      'label': 'TransScript'
       'submenu': [
         {
-          'label': 'Toggle'
-          'command': 'language-transscript:toggle'
+          'label': 'Check'
+          'command': 'language-transscript:check'
         }
       ]
     ]
