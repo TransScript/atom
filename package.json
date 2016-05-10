@@ -4,15 +4,21 @@
   "version": "0.2.0",
   "description": "TransScript language support in Atom",
   "keywords": [],
-  "activationCommands": {
-    "atom-workspace": ["core:save","language-transscript:check"]
-  },
   "repository": "https://github.com/TransScript/atom.git",
   "license": "EPL",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "dependencies": {},
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "1.0.0": "provideLinter"
+      }
+    }
+  },
+  "dependencies" : {
+     "atom-linter": "^5.0.1"
+  },
   "configSchema": {
     "metaCompilerPath": {
       "title": "TransScript Meta-Compiler Path",

@@ -4,4 +4,4 @@ module TransScript
 
 enum Boolean  ( TRUE; FALSE; )
 
-rule F → text⟦ some " text ⟨ rule F ( text⟦ ⟨rule fa⟩ ⟧ ) ⟩ ⟧
+ rule F → text⟦ some " text ⟨ rule F ( text⟦ ⟨rule fa⟩ ⟧ ) ⟩ ⟧
