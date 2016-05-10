@@ -6,21 +6,22 @@ helpers = null
 lint = (editor) ->
   console.log "lint"
   helpers ?= require('atom-linter')
-  regex = '^line (?<line>[0-9]+):(?<col>[0-9]+)\\s*(?<message>.+)$'
+  regex = 'line (?<line>[0-9]+):(?<col>[0-9]+)\\s*(?<message>.+)'
   filePath = editor.getPath()
   javaPath = atom.config.get "language-transscript.javaPath"
   metaCompilerPath = atom.config.get "language-transscript.metaCompilerPath"
 
-  helpers.exec(javaPath, ["-jar", metaCompilerPath + "/transscript-1.0.0-SNAPSHOT.jar", "parse", "quiet", "rules=" + filePath], {stream: 'both'}).then (output) ->
-    console.log output.stderr
-    console.log output.stdout
+  # TODO: configurable
+  grammars = "org.transscript.text.TextMetaParser, org.transscript.core.CoreMetaParser"
 
+  helpers.exec(javaPath, ["-jar", metaCompilerPath + "/transscript-1.0.0-SNAPSHOT.jar", "parse", "quiet", "grammars=" + grammars, "rules=" + filePath], {stream: 'both'}).then (output) ->
     errors = helpers.parse(output.stderr, regex).map (message) ->
       message.filePath = filePath
       message.type = 'Error'
       line = message.range[0][0]
       col = message.range[0][1]
       message.range = helpers.rangeFromLineNumber(editor, line, col)
+      message.text = message.text.replace /expectin.+/, ""
       message
     return errors
 
