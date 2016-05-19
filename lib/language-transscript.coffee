@@ -4,7 +4,6 @@ path = require 'path'
 helpers = null
 
 lint = (editor) ->
-  console.log "lint"
   helpers ?= require('atom-linter')
   regex = 'line (?<line>[0-9]+):(?<col>[0-9]+)\\s*(?<message>.+)'
   filePath = editor.getPath()
@@ -12,7 +11,7 @@ lint = (editor) ->
   metaCompilerPath = atom.config.get "language-transscript.metaCompilerPath"
 
   # TODO: configurable
-  grammars = "org.transscript.text.TextMetaParser, org.transscript.core.CoreMetaParser"
+  grammars = "org.transscript.text.Text4MetaParser,org.transscript.core.CoreMetaParser"
 
   helpers.exec(javaPath, ["-jar", metaCompilerPath + "/transscript-1.0.0-SNAPSHOT.jar", "parse", "quiet", "grammars=" + grammars, "rules=" + filePath], {stream: 'both'}).then (output) ->
     errors = helpers.parse(output.stderr, regex).map (message) ->
