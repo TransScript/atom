@@ -1,3 +1,3 @@
-# language-transscript package
+# language-tosca package
 
-TransScript package for Atom
+Tosca language package for Atom

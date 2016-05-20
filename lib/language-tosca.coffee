@@ -1,4 +1,4 @@
-#LanguageTransScriptView = require './language-transscript-view'
+#LanguageToscaView = require './language-tosca-view'
 {CompositeDisposable} = require 'atom'
 path = require 'path'
 helpers = null
@@ -7,8 +7,8 @@ lint = (editor) ->
   helpers ?= require('atom-linter')
   regex = 'line (?<line>[0-9]+):(?<col>[0-9]+)\\s*(?<message>.+)'
   filePath = editor.getPath()
-  javaPath = atom.config.get "language-transscript.javaPath"
-  metaCompilerPath = atom.config.get "language-transscript.metaCompilerPath"
+  javaPath = atom.config.get "language-tosca.javaPath"
+  metaCompilerPath = atom.config.get "language-tosca.metaCompilerPath"
 
   # TODO: configurable
   grammars = "org.transscript.text.Text4MetaParser,org.transscript.core.CoreMetaParser"
@@ -25,33 +25,33 @@ lint = (editor) ->
     return errors
 
 
-module.exports = LanguageTransScript =
-  #languageTransScriptView: null
+module.exports = LanguageTosca =
+  #languageToscaView: null
   subscriptions: null
 
   activate: (state) ->
-    #@languageTransScriptView = new LanguageTransScriptView(state.languageTransscriptViewState)
+    #@languageToscaView = new LanguageToscaView(state.languageTransscriptViewState)
 
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
 
     # Register command that check syntax on save
     #@subscriptions.add atom.commands.add 'atom-workspace', 'core:save' : => @onSave()
-    console.log "TransScript Activated"
+    console.log "Tosca Activated"
 
-    #@subscriptions.add atom.commands.add 'atom-workspace', 'language-transscript:toggle': => @toggle()
+    #@subscriptions.add atom.commands.add 'atom-workspace', 'language-tosca:toggle': => @toggle()
 
   deactivate: ->
     @subscriptions.dispose()
-    #@languageTransScriptView.destroy()
+    #@languageToscaView.destroy()
 
   serialize: ->
-    #languageTransScriptViewState: @languageTransScriptView.serialize()
+    #languageToscaViewState: @languageToscaView.serialize()
 
   provideLinter: =>
     provider =
-      grammarScopes: ['source.transscript']
+      grammarScopes: ['source.tosca']
       scope: 'file'
       lintOnFly: false
-      name: 'TransScript Lint'
+      name: 'Tosca'
       lint: (editor) => lint editor

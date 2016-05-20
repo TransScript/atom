@@ -3,18 +3,18 @@
   'atom-text-editor': [
     {
       'label': 'Check syntax'
-      'command': 'language-transscript:check'
+      'command': 'language-tosca:lint'
     }
   ]
 'menu': [
   {
     'label': 'Packages'
     'submenu': [
-      'label': 'TransScript'
+      'label': 'Tosca'
       'submenu': [
         {
           'label': 'Check'
-          'command': 'language-transscript:check'
+          'command': 'language-tosca:lint'
         }
       ]
     ]

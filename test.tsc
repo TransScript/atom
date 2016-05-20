@@ -1,7 +1,5 @@
-module TransScript
-
 /* Nested /* co /*mme */nt */ */
 
-enum Boolean  ( TRUE; FALSE; )
+enum Boolean |  TRUE | FALSE
 
- rule F → text⟦ some " text ⟨ rule F ( text⟦ ⟨rule fa⟩ ⟧ ) ⟩ ⟧
+ rule F → text⟦ some " text †⟨ data D() ) ⟩ ⟧

@@ -1,17 +1,17 @@
 {
-  "scopeName": "source.transscript",
-  "name": "TransScript",
-  "comment": "TransScript Language",
+  "scopeName": "source.tosca",
+  "name": "Tosca",
+  "comment": "Tosca Language",
   "fileTypes": [
     "crs4", "tsc"
   ],
   "patterns": [
     {
-      "include": "#transscript"
+      "include": "#tosca"
     }
   ],
   "repository": {
-    "transscript": {
+    "tosca": {
       "patterns": [
         {
           "include": "#comments"
@@ -21,27 +21,27 @@
         },
         {
           "match": "\\/\\/.*",
-          "name": "comment.line.transscript"
+          "name": "comment.line.tosca"
         },
         {
           "match": "→|->",
-          "name": "keyword.operator.transscript"
+          "name": "keyword.operator.tosca"
         },
         {
           "match": "([A-Z$_+/|`~!@^&*=?/><.:]|-)([0-9a-zA-Z$_+/|`~!@^&*=?/><.:]|-)*",
-          "name": "entity.name.function.transscript"
+          "name": "entity.name.function.tosca"
         },
         {
           "match": "func|eager|lazy|extern|rule|enum|dispatch|module|import|grammar|infixl|infixr|infix|prefix|postfix|allows-variable",
-          "name": "keyword.control.transscript"
+          "name": "keyword.control.tosca"
         },
         {
           "match": ",|\\(|\\)|\\[|\\]",
-          "name": "keyword.operator.transscript"
+          "name": "keyword.operator.tosca"
         },
         {
           "match": "#[0-9a-zA-Z\\-_]*(\\*|\\?|\\+)?[0-9]*",
-          "name": "variable.transscript"
+          "name": "variable.tosca"
         },
         {
           "include": "#string"
@@ -58,7 +58,7 @@
               "include": "#string"
             }
           ],
-          "name": "string.transscript"
+          "name": "string.tosca"
         }
       ]
     },
@@ -72,7 +72,7 @@
               "include": "#comments"
             }
           ],
-          "name": "comment.block.transscript"
+          "name": "comment.block.tosca"
         }
       ]
     },
@@ -82,26 +82,26 @@
           "begin": "([a-z][a-zA-Z0-9\\-_]*(\\*|\\?|\\+)?)(⟦)",
           "end": "(⟧)",
           "beginCaptures" : {
-            "1" : { "name" : 'support.class.transscript' },
-            "3" : { "name" : 'keyword.operator.transscript' }
+            "1" : { "name" : 'support.class.tosca' },
+            "3" : { "name" : 'keyword.operator.tosca' }
           },
           "endCaptures" : {
-            "1" : { "name" : 'keyword.operator.transscript' }
+            "1" : { "name" : 'keyword.operator.tosca' }
           },
           "patterns": [
             {
               "begin": "⟨",
               "end": "⟩",
-              "name": "embedded.source.transscript",
+              "name": "embedded.source.tosca",
               "patterns" : [ {
-                "include": "#transscript"
+                "include": "#tosca"
               } ]
             },
             {
               "include": "#concrete"
             }
           ],
-          "name": "punctuation.section.embedded.transscript"
+          "name": "punctuation.section.embedded.tosca"
         }
       ]
     }

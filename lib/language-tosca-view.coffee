@@ -1,5 +1,5 @@
 module.exports =
-class LanguageTransScriptView
+class LanguageToscaView
   constructor: (serializedState) ->
     # Create root element
     #@element = document.createElement('div')
