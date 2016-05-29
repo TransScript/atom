@@ -1,25 +1,52 @@
 {
-  "name": "language-transscript",
-  "main": "./lib/language-transscript",
+  "name": "language-tosca",
+  "main": "./lib/language-tosca",
   "version": "0.2.0",
-  "description": "TransScript language support in Atom",
+  "description": "Tosca language support in Atom",
   "keywords": [],
-  "activationCommands": {
-    "atom-workspace": "language-transscript:toggle"
-  },
-  "repository": "https://github.com/TransScript/atom.git",
+  "repository": "https://github.com/tosca-lang/atom.git",
   "license": "EPL",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "dependencies": {},
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "1.0.0": "provideLinter"
+      }
+    }
+  },
+  "dependencies" : {
+     "atom-linter": "^5.0.1"
+  },
   "configSchema": {
     "metaCompilerPath": {
-      "title": "TransScript Meta-Compiler Path",
-      "description": "Path to the directory containing the TransScript JAR distribution.",
+      "title": "Tosca Meta-Compiler Path",
+      "description": "Path to the directory containing the Tosca JAR distribution.",
       "type": "string",
       "default": ".",
       "order": 1
+    },
+    "javaPath": {
+      "title": "Java Path",
+      "description": "Path to the java executable.",
+      "type": "string",
+      "default": "/usr/bin/java",
+      "order": 2
+    },
+    "grammarClasspath": {
+      "title": "Parsers Java Class Path ",
+      "description": "A semicolon separated list of directories, JAR archives, and ZIP archives to search for parser class files",
+      "type": "string",
+      "default": "",
+      "order": 3
+    },
+    "grammarClassname": {
+      "title": "Parsers Java Class Name",
+      "description": "A comma separated list of parser class names",
+      "type": "string",
+      "default": "",
+      "order": 4
     }
   }
 }

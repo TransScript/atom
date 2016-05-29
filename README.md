@@ -1,3 +1,3 @@
 # language-tosca package
 
-Tosca package for Atom
+Tosca language package for Atom
