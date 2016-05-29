@@ -2,6 +2,7 @@
 {CompositeDisposable} = require 'atom'
 path = require 'path'
 helpers = null
+notified = false
 
 lint = (editor) ->
   helpers ?= require('atom-linter')
@@ -9,11 +10,21 @@ lint = (editor) ->
   filePath = editor.getPath()
   javaPath = atom.config.get "language-tosca.javaPath"
   metaCompilerPath = atom.config.get "language-tosca.metaCompilerPath"
+  grammars =  atom.config.get "language-tosca.grammarClassname"
+  grammarsPath =  atom.config.get "language-tosca.grammarClasspath"
 
-  # TODO: configurable
-  grammars = "org.transscript.text.Text4MetaParser,org.transscript.core.CoreMetaParser"
+  cp = metaCompilerPath + "/transscript-1.0.0-SNAPSHOT.jar"
+  cp += ":" + metaCompilerPath + "/transscript-1.0.0-SNAPSHOT.jar:libs/*"
+  cp += ":" + grammarsPath if grammarsPath
 
-  helpers.exec(javaPath, ["-jar", metaCompilerPath + "/transscript-1.0.0-SNAPSHOT.jar", "parse", "quiet", "grammars=" + grammars, "rules=" + filePath], {stream: 'both'}).then (output) ->
+  grammars = "grammars=" + grammars if grammars
+
+  helpers.exec(javaPath, ["-cp", cp, "org.transscript.Tool", "parse", "quiet", grammars, "rules=" + filePath], {stream: 'both'}).then (output) ->
+    #console.log output.stderr
+    if not notified and (output.stderr.search "/Error: Unable to access jarfile/") isnt -1
+      atom.notifications.addError(output.stderr, {detail: "Go to Tosca settings and fix path to Tosca jar file.", dismissable:true})
+      notified = true
+
     errors = helpers.parse(output.stderr, regex).map (message) ->
       message.filePath = filePath
       message.type = 'Error'
