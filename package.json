@@ -1,7 +1,7 @@
 {
   "name": "language-tosca",
   "main": "./lib/language-tosca",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Tosca language support in Atom",
   "keywords": [],
   "repository": "https://github.com/tosca-lang/atom.git",
@@ -16,8 +16,8 @@
       }
     }
   },
-  "dependencies" : {
-     "atom-linter": "^5.0.1"
+  "dependencies": {
+    "atom-linter": "^5.0.1"
   },
   "configSchema": {
     "metaCompilerPath": {
