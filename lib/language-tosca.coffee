@@ -17,10 +17,9 @@ lint = (editor) ->
   cp += ":" + metaCompilerPath + "/transscript-1.0.0-SNAPSHOT.jar:libs/*"
   cp += ":" + grammarsPath if grammarsPath
 
-  grammars = "grammars=" + grammars if grammars
-
+  grammars = "parsers=" + grammars if grammars
   helpers.exec(javaPath, ["-cp", cp, "org.transscript.Tool", "parse", "quiet", grammars, "rules=" + filePath], {stream: 'both'}).then (output) ->
-    #console.log output.stderr
+    console.log output.stderr
     if not notified and (output.stderr.search "/Error: Unable to access jarfile/") isnt -1
       atom.notifications.addError(output.stderr, {detail: "Go to Tosca settings and fix path to Tosca jar file.", dismissable:true})
       notified = true

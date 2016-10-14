@@ -36,7 +36,7 @@
     },
     "grammarClasspath": {
       "title": "Parsers Java Class Path ",
-      "description": "A semicolon separated list of directories, JAR archives, and ZIP archives to search for parser class files",
+      "description": "A colon separated list of directories, JAR archives, and ZIP archives to search for parser class files",
       "type": "string",
       "default": "",
       "order": 3

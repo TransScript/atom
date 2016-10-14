@@ -14,6 +14,9 @@
     "tosca": {
       "patterns": [
         {
+          "include": "#string"
+        },
+        {
           "include": "#comments"
         },
         {
@@ -24,19 +27,23 @@
           "name": "comment.line.tosca"
         },
         {
-          "match": "→|->",
+          "match": "\\b(→|->)\\b",
           "name": "keyword.operator.tosca"
         },
         {
-          "match": "([A-Z$_+/|`~!@^&*=?/><.:]|-)([0-9a-zA-Z$_+/|`~!@^&*=?/><.:]|-)*",
+          "match": "@([0-9a-zA-Z$_+/|`~!@^&*=?/><.:]|-)*",
+          "name": "storage.modifier.global.tosca"
+        },
+        {
+          "match": "\\b([A-Z$_]|-)([0-9a-zA-Z$_]|-)*\\b",
           "name": "entity.name.function.tosca"
         },
         {
-          "match": "func|eager|lazy|extern|rule|enum|dispatch|module|import|grammar|infixl|infixr|infix|prefix|postfix|allows-variable",
+          "match": "\\b(func|eager|lazy|extern|rule|enum|module|import|grammar|allows-variable|variable|type|let|if|else|for|in)\\b",
           "name": "keyword.control.tosca"
         },
         {
-          "match": ",|\\(|\\)|\\[|\\]",
+          "match": ",|\\(|\\)|\\[|\\]|\\.\\.\\.|=",
           "name": "keyword.operator.tosca"
         },
         {
@@ -44,7 +51,8 @@
           "name": "variable.tosca"
         },
         {
-          "include": "#string"
+          "match": "[a-z]([0-9a-zA-Z$_]|-)*",
+          "name": "variable.tosca"
         }
       ]
     },
@@ -55,7 +63,12 @@
           "end": "\"",
           "patterns": [
             {
-              "include": "#string"
+              "match": "\\\\.|\\\\\"|\"\"",
+              "name": "constant.character.escape.tosca"
+            },
+            {
+              "match": "[^\"]*[^\\n\\r\"\\\\]$",
+              'name': 'invalid.illegal.string.tosca'
             }
           ],
           "name": "string.tosca"
