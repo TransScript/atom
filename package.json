@@ -1,7 +1,7 @@
 {
   "name": "language-tosca",
   "main": "./lib/language-tosca",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Tosca language support in Atom",
   "keywords": [],
   "repository": "https://github.com/tosca-lang/atom.git",
