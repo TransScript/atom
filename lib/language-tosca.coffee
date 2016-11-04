@@ -13,8 +13,8 @@ lint = (editor) ->
   grammars =  atom.config.get "language-tosca.grammarClassname"
   grammarsPath =  atom.config.get "language-tosca.grammarClasspath"
 
-  cp = metaCompilerPath + "/transscript-1.0.0-SNAPSHOT.jar"
-  cp += ":" + metaCompilerPath + "/transscript-1.0.0-SNAPSHOT.jar:libs/*"
+  cp = metaCompilerPath + "/tosca.jar"
+  cp += ":" + metaCompilerPath + "/tosca.jar:libs/*"
   cp += ":" + grammarsPath if grammarsPath
 
   grammars = "parsers=" + grammars if grammars
